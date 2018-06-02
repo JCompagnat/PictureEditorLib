@@ -2,6 +2,7 @@ from PIL import Image
 import datetime
 import piexif
 import os
+import shutil
 
 #Needed to identify image as JPEG instead of MPO
 from PIL import JpegImagePlugin
@@ -32,9 +33,15 @@ def batchProcessing(folderPath):
     fileNames = [fn for fn in os.listdir(folderPath)
                         if fn.endswith(imgExtensions)]
 
+    NewImgDirectory="/Modified Images"
+    cwd = os.getcwd()
+    if not os.path.exists(cwd+NewImgDirectory):
+        os.makedirs(cwd+NewImgDirectory)
+
     for item in fileNames:
         print("Processing: "+item)
-        img=Image.open(item)
+        shutil.copyfile(item, cwd+NewImgDirectory+"/"+item)
+        img=Image.open(cwd+NewImgDirectory+'/'+item)
         imgDateAdjust(img, -12)
         print("end processing: "+item)
         print("")

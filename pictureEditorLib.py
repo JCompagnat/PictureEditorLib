@@ -40,7 +40,7 @@ def batchProcessing(folderPath):
 
     for item in fileNames:
         print("Processing: "+item)
-        shutil.copyfile(item, cwd+NewImgDirectory+"/"+item)
+        shutil.copyfile(folderPath+"/"+item, cwd+NewImgDirectory+"/"+item)
         img=Image.open(cwd+NewImgDirectory+'/'+item)
         imgDateAdjust(img, -12)
         print("end processing: "+item)
@@ -48,7 +48,7 @@ def batchProcessing(folderPath):
     print("********************End Batch Processing********************")
 
 def main():
-    batchProcessing("C:\DATA\Professionnel\Programmation\PictureEditorLib")
+    batchProcessing("C:\DATA\Professionnel\Programmation\PictureEditorLib\Original Images")
     return()
 
 main()

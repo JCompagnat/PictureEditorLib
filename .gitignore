@@ -1,5 +1,7 @@
 
 *.JPEG
 *.JPG
+*.THM
+*.MP4
 virtualEnv/
 documentations/
